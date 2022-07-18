@@ -1,15 +1,12 @@
-
-
 from selenium import webdriver
 from selenium.webdriver.common.action_chains import ActionChains
 import time
 
-driver_path = "chromedriver"
-driver = webdriver.Chrome(executable_path=driver_path)
-
 shopname="LingoBottles"
 url = f'https://www.etsy.com/shop/{shopname}'
 
+driver_path = "chromedriver"
+driver = webdriver.Chrome(executable_path=driver_path)
 driver.get(url)
 driver.maximize_window()
 time.sleep(1)
@@ -22,9 +19,9 @@ driver.find_element_by_class_name("col-md-4.text-right-md-up.p-xs-0").click()
 time.sleep(1)
 driver.find_element_by_xpath('//*[@id="sort-reviews-menu"]/div/button[2]').click()
 time.sleep(3)
+
 Yorumlar = driver.find_element_by_class_name('reviews-list')
 Yorum = Yorumlar.find_elements_by_tag_name("li")
-Yorum2 = Yorumlar.find_elements_by_tag_name("li")
 print(len(Yorumlar.find_elements_by_tag_name("li")))
 
 
@@ -42,7 +39,7 @@ User and product links who submitted reviews
 -------------------------------------------------------------
 """)
 
-for item2 in Yorum2:
+for item2 in Yorum:
     linkler=item2.find_elements_by_tag_name("a")
     for link in linkler:
         if "people" in link.get_attribute('href'):
